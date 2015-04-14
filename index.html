@@ -67,7 +67,7 @@
             <md-radio-button ng-repeat="color in colorData"
                              ng-value="color"
                              ng-disabled=" color.isDisabled " style="display: inline-block; marign-left: 10px">
-                <div style="background-color:rgba({{color.hue}},{{color.saturation}},{{color.lightness}},1);height: 40px; width: 250px; text-align: center; line-height: 40px;">rgba({{color.hue}},{{color.saturation}},{{color.lightness}},1)</div>
+                <div style="background-color:rgba({{color.r}},{{color.g}},{{color.b}},1);height: 40px; width: 250px; text-align: center; line-height: 40px;">rgba({{color.r}},{{color.g}},{{color.b}},1)</div>
             </md-radio-button>
         </md-radio-group>
         <!-- <div ng-repeat="item in colorCollection" class="colorId">
