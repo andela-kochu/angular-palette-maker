@@ -86,14 +86,14 @@ paletteMakerApp.controller('paletteMakerController', ['$scope', 'colorPalette', 
   }
   $scope.createColor = function() {
     $scope.colorData.push({first: hsl2rgb($scope.hue, $scope.saturation, $scope.lightness),second: hsl2rgb($scope.hue, $scope.saturation, $scope.lightness+10), third:  hsl2rgb($scope.hue, $scope.saturation, $scope.lightness + 20)});
-
   }; 
-  $scope.submit = function() {
-    alert('submit');
+
+  $scope.editColor = function() {
+    
   };
   $scope.removeItem = function(HEX) {
-    for(var i = 0; i < $scope.colorData.length; i++){
-      if($scope.colorData[i].HEX === $scope.data.group2.HEX){
+    for(var i = 0; i < $scope.colorData.length; i++){ 
+      if($scope.colorData[i].first.HEX === $scope.data.group2.first.HEX){
         $scope.colorData.splice(i, 1);
       }
     }

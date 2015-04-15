@@ -17,7 +17,7 @@
   <md-toolbar>
       <div class="md-toolbar-tools">
         <h2>
-          <span>My Palette Maker App</span>
+          <span>CHITECH Palette Maker App</span>
         </h2>
       </div>
     </md-toolbar>
@@ -65,6 +65,7 @@
       </div>
     
      <md-card flex="700" layout="column" layout-align="center center" class="md-whiteframe-z1" style="margin-top: 10px">
+     {{data.group2}}
       <md-radio-group ng-model="data.group2" class="md-primary"  >
             <md-radio-button ng-repeat="color in colorData" 
                              ng-value="color">
@@ -81,7 +82,7 @@
         </md-radio-group>
     </md-card>
     <div layout layout-align="center center" style="margin-top: 15px">
-      <md-button flex-md="15" class="md-accent md-raised md-hue-1" ng-click="addItem()" type="button">Edit Color</md-button>&nbsp; &nbsp;
+      <md-button flex-md="15" class="md-accent md-raised md-hue-1" ng-click="editColor()" type="button">Edit Color</md-button>&nbsp; &nbsp;
       <md-button  class="md-raised md-warn purple" flex-md="15" ng-click="removeItem()" type="button">Remove Color</md-button>&nbsp; &nbsp;
       <md-button  class="md-raised md-warn" flex-md="15" ng-click="removeAll()" type="button">Remove All</md-button>
     </div>
