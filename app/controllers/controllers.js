@@ -84,16 +84,18 @@ paletteMakerApp.controller('paletteMakerController', ['$scope', 'colorPalette', 
   function rgbToHex(r, g, b) {
       return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
   }
-  $scope.createColor = function() {
+  $scope.addUpdateColor = function() {
     $scope.colorData.push({first: hsl2rgb($scope.hue, $scope.saturation, $scope.lightness),second: hsl2rgb($scope.hue, $scope.saturation, $scope.lightness+10), third:  hsl2rgb($scope.hue, $scope.saturation, $scope.lightness + 20), rawhsl: [$scope.hue, $scope.saturation, $scope.lightness]});
   }; 
 
   $scope.editColor = function() {
     for(var i = 0; i < $scope.colorData.length; i++){ 
       if($scope.colorData[i].first.HEX === $scope.data.group2.first.HEX){
-        $scope.hue = colorPalette.hue;
-        $scope.saturation = colorPalette.saturation;
-        $scope.lightness = colorPalette.lightness;
+        
+        $scope.addUpdateBtn = "Update Color";
+        $scope.hue = $scope.colorData[i].rawhsl[0];  
+        $scope.saturation = $scope.colorData[i].rawhsl[1];
+        $scope.lightness = $scope.colorData[i].rawhsl[2];
       }
     }
   };
@@ -101,10 +103,12 @@ paletteMakerApp.controller('paletteMakerController', ['$scope', 'colorPalette', 
     for(var i = 0; i < $scope.colorData.length; i++){ 
       if($scope.colorData[i].first.HEX === $scope.data.group2.first.HEX){
         $scope.colorData.splice(i, 1);
+        $scope.addUpdateBtn = colorPalette.btn;
       }
     }
   };
   $scope.removeAll = function() {
     $scope.colorData = [];
+    $scope.addUpdateBtn = colorPalette.btn;
   };
 }]);

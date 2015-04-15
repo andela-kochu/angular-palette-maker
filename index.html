@@ -61,23 +61,25 @@
             <div layout  layout-align="center center"><span><b>RGBA </b>({{colorData2.r}}, {{colorData2.g}}, {{colorData2.b}})</span>&nbsp;<span><b>HSL</b>({{hue}}, {{saturation}}, {{lightness}})</span>&nbsp;<span><b>HEX:</b> {{colorData2 | hexacolor}}</span>
             </div>
       <div layout  layout-align="center center" style="margin-top: 15px" >
-        <md-button class="md-raised md-primary" flex-md="15" type="button"  ng-click="createColor()">{{addUpdateBtn}}</md-button>
+        <md-button class="md-raised md-primary" flex-md="15" type="button"  ng-click="addUpdateColor()">{{addUpdateBtn}}</md-button>
       </div>
     
      <md-card flex="700" layout="column" layout-align="center center" class="md-whiteframe-z1" style="margin-top: 10px">
-     {{data.group2}}
+   <!--   {{data.group2}} -->
       <md-radio-group ng-model="data.group2" class="md-primary"  >
             <md-radio-button ng-repeat="color in colorData" 
                              ng-value="color">
-                <div style="background-color:rgba({{color.first.r}},{{color.first.g}},{{color.first.b}},1);height: 40px; width: 350px; text-align: center; line-height: 40px;display: inline-block; margin-left: 20px">
-                  <span>RGBA({{color.first.r}}, {{color.first.g}}, {{color.first.b}},1) {{color.first | hexacolor}}</span>
-                </div>
-                <div style="background-color:rgba({{color.second.r}}, {{color.second.g}}, {{color.second.b}}, 1);height: 40px; width: 350px; text-align: center; line-height: 40px;display: inline-block; margin: 10px 20px">
-                  RGBA({{color.second.r}}, {{color.second.g}}, {{color.second.b}}, 1) {{color.second | hexacolor}}
-                </div>
-                <div style="background-color:rgba({{color.third.r}}, {{color.third.g}}, {{color.third.b}},1);height: 40px; width: 350px; text-align: center; line-height: 40px; display: inline-block; margin-left: 20px">
-                  RGBA({{color.third.r}}, {{color.third.g}}, {{color.third.b}},1) {{color.third | hexacolor}}
-                </div>
+              <div class="md-whiteframe-z2"  style="padding: 5px">  
+                <div style="background-color:rgba({{color.first.r}},{{color.first.g}},{{color.first.b}},1);height: 40px; width: 350px; text-align: center; line-height: 40px;display: inline-block">
+                    <span>RGBA({{color.first.r}}, {{color.first.g}}, {{color.first.b}},1) {{color.first | hexacolor}}</span>
+                  </div>
+                  <div style="background-color:rgba({{color.second.r}}, {{color.second.g}}, {{color.second.b}}, 1);height: 40px; width: 350px; text-align: center; line-height: 40px;display: inline-block; margin-left: 20px">
+                    RGBA({{color.second.r}}, {{color.second.g}}, {{color.second.b}}, 1) {{color.second | hexacolor}}
+                  </div>
+                  <div style="background-color:rgba({{color.third.r}}, {{color.third.g}}, {{color.third.b}},1);height: 40px; width: 350px; text-align: center; line-height: 40px; display: inline-block; margin-left: 10px">
+                    RGBA({{color.third.r}}, {{color.third.g}}, {{color.third.b}},1) {{color.third | hexacolor}}
+                  </div>
+              </div>
             </md-radio-button>
         </md-radio-group>
     </md-card>
