@@ -6,26 +6,14 @@ var paletteMakerApp = angular.module('paletteMakerApp', ['ngMaterial']);
 
 paletteMakerApp.factory('colorPalette', function(){
     return {
-      hue: 145,
-      saturation: 10,
+      hue: 170,
+      saturation: 62  ,
       lightness: 20
     };
   })
   .factory('colorCollection', function(){
     return [];
   })
-
-/**
- * filters
- * ----------------------------------------------
- */
-
-  /**
-   * hexacolor
-   *
-   * transform an object {r:255, v:255, b:255} to hexa #FFFFFF
-   * @return string 
-   */
   .filter('hexacolor', function () {
   return function (color) {
     var output = "#";
