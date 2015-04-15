@@ -8,7 +8,7 @@ paletteMakerApp.factory('colorPalette', function(){
     return {
       hue: 170,
       saturation: 62  ,
-      lightness: 20
+      lightness: 47
     };
   })
   .factory('colorCollection', function(){

@@ -22,15 +22,15 @@
       </div>
     </md-toolbar>
    
-    <md-content style="margin: 10px; padding:10px"> 
+    <md-content style="padding:10px"> 
       <div >
         <div layout>
           <div flex="20" layout layout-align="center center">
             <span class="md-body-1">HUE</span>
           </div>
-          <md-slider flex="60" min="0" max="360" ng-model="hue" aria-label="brown" id="red-slider" class="md-primary">
+          <md-slider flex="60" min="0" max="360" ng-model="hue" aria-label="brown" id="red-slider" class="md-primary" style="margin-left: 10px">
           </md-slider>
-          <div flex="5" layout layout-align="center center" style="margin-left: 10px">
+          <div flex="10" layout layout-align="center center" style="margin-left: 10px">
             <input type="number" ng-model="hue" aria-label="red" aria-controls="red-slider" style="text-align: center">
           </div>
         </div>
@@ -38,9 +38,9 @@
           <div flex="20" layout layout-align="center center">
             <span class="md-body-1">SATURATION</span>
           </div>
-          <md-slider flex="60" ng-model="saturation" min="0" max="100" aria-label="green" id="green-slider" class="md-accent">
+          <md-slider flex="60" ng-model="saturation" min="0" max="100" aria-label="green" id="green-slider" class="md-accent" style="margin-left: 10px">
           </md-slider>
-          <div flex="5" layout layout-align="center center" style="margin-left: 10px">
+          <div flex="10" layout layout-align="center center" style="margin-left: 10px">
             <input type="number" ng-model="saturation" aria-label="green" aria-controls="green-slider" style="text-align: center">
           </div>
         </div>
@@ -48,9 +48,9 @@
           <div flex="20" layout layout-align="center center">
             <span class="md-body-1">LIGTHNESS</span>
           </div>
-          <md-slider flex="60" ng-model="lightness" min="0" max="100" aria-label="blue" id="blue-slider" class="md-primary">
+          <md-slider flex="60" ng-model="lightness" min="0" max="100" aria-label="blue" id="blue-slider" class="md-primary" style="margin-left: 10px">
           </md-slider>
-          <div flex="5" layout layout-align="center center" style="margin-left: 10px">
+          <div flex="10" layout layout-align="center center" style="margin-left: 10px">
             <input type="number" ng-model="lightness" aria-label="blue" aria-controls="blue-slider" style="text-align: center">
           </div>
         </div>
@@ -61,15 +61,22 @@
             <div layout  layout-align="center center"><span><b>RGBA </b>({{colorData2.r}}, {{colorData2.g}}, {{colorData2.b}})</span>&nbsp;<span><b>HSL</b>({{hue}}, {{saturation}}, {{lightness}})</span>&nbsp;<span><b>HEX:</b> {{colorData2 | hexacolor}}</span>
             </div>
       <div layout  layout-align="center center" style="margin-top: 15px" >
-        <md-button class="md-raised md-primary" flex="15" type="button"  ng-click="createColor()">Add Color</md-button>
+        <md-button class="md-raised md-primary" flex-md="15" type="button"  ng-click="createColor()">Add Color</md-button>
       </div>
     
      <md-card flex="700" layout="column" layout-align="center center" class="md-whiteframe-z1" style="margin-top: 10px">
       <md-radio-group ng-model="data.group2" class="md-primary"  >
-            <md-radio-button ng-repeat="color in colorData"
-                             ng-value="color"
-                             style="display: inline-block; marign-left: 10px">
-                <div style="background-color:rgba({{color.r}},{{color.g}},{{color.b}},1);height: 40px; width: 250px; text-align: center; line-height: 40px;">RGB({{color.r}}, {{color.g}}, {{color.b}}) {{color | hexacolor}}</div>
+            <md-radio-button ng-repeat="color in colorData" 
+                             ng-value="color">
+                <div style="background-color:rgba({{color.first.r}},{{color.first.g}},{{color.first.b}},1);height: 40px; width: 350px; text-align: center; line-height: 40px;display: inline-block; margin-left: 20px">
+                  <span>RGBA({{color.first.r}}, {{color.first.g}}, {{color.first.b}},1) {{color.first | hexacolor}}</span>
+                </div>
+                <div style="background-color:rgba({{color.second.r}}, {{color.second.g}}, {{color.second.b}}, 1);height: 40px; width: 350px; text-align: center; line-height: 40px;display: inline-block; margin: 10px 20px">
+                  RGBA({{color.second.r}}, {{color.second.g}}, {{color.second.b}}, 1) {{color.second | hexacolor}}
+                </div>
+                <div style="background-color:rgba({{color.third.r}}, {{color.third.g}}, {{color.third.b}},1);height: 40px; width: 350px; text-align: center; line-height: 40px; display: inline-block; margin-left: 20px">
+                  RGBA({{color.third.r}}, {{color.third.g}}, {{color.third.b}},1) {{color.third | hexacolor}}
+                </div>
             </md-radio-button>
         </md-radio-group>
         <!-- <div ng-repeat="item in colorCollection" class="colorId">
@@ -78,9 +85,9 @@
         </div> -->
     </md-card>
     <div layout layout-align="center center" style="margin-top: 15px">
-      <md-button flex="15" class="md-accent md-raised md-hue-1" ng-click="addItem()" type="button">Edit Color</md-button>&nbsp; &nbsp;
-      <md-button  class="md-raised md-warn" flex="15" ng-click="removeItem()" type="button">Remove Color</md-button>&nbsp; &nbsp;
-      <md-button  class="md-raised md-warn" flex="15" ng-click="removeAll()" type="button">Remove All</md-button>
+      <md-button flex-md="15" class="md-accent md-raised md-hue-1" ng-click="addItem()" type="button">Edit Color</md-button>&nbsp; &nbsp;
+      <md-button  class="md-raised md-warn purple" flex-md="15" ng-click="removeItem()" type="button">Remove Color</md-button>&nbsp; &nbsp;
+      <md-button  class="md-raised md-warn" flex-md="15" ng-click="removeAll()" type="button">Remove All</md-button>
     </div>
   </md-content>
 

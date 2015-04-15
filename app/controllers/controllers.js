@@ -79,13 +79,14 @@ paletteMakerApp.controller('paletteMakerController', ['$scope', 'colorPalette', 
     r = Math.round((r + m) * 255)
     g = Math.round((g + m) * 255)
     b = Math.round((b + m) * 255)
-    return { r: r, g: g, b: b, /*HEX: rgbToHex(r, g, b)*/}
+    return { r: r, g: g, b: b, HEX: rgbToHex(r, g, b)}
   }
-  /*function rgbToHex(r, g, b) {
+  function rgbToHex(r, g, b) {
       return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
-  }*/
+  }
   $scope.createColor = function() {
-    $scope.colorData.push(hsl2rgb($scope.hue, $scope.saturation, $scope.lightness));
+    $scope.colorData.push({first: hsl2rgb($scope.hue, $scope.saturation, $scope.lightness),second: hsl2rgb($scope.hue, $scope.saturation, $scope.lightness+10), third:  hsl2rgb($scope.hue, $scope.saturation, $scope.lightness + 20)});
+
   }; 
   $scope.submit = function() {
     alert('submit');
