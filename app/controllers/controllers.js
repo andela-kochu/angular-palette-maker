@@ -14,6 +14,7 @@ paletteMakerApp.controller('paletteMakerController', ['$scope', 'colorPalette', 
   $scope.saturation = colorPalette.saturation;
   $scope.lightness = colorPalette.lightness;
   $scope.colorData = []
+  /*$scope.hideShow = false;*/
   $scope.$watch( "hue",
   function(newValue, oldValue) {
     if ( newValue !== oldValue ) {
@@ -85,17 +86,27 @@ paletteMakerApp.controller('paletteMakerController', ['$scope', 'colorPalette', 
       return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
   }
   $scope.addUpdateColor = function() {
-    $scope.colorData.push({first: hsl2rgb($scope.hue, $scope.saturation, $scope.lightness),second: hsl2rgb($scope.hue, $scope.saturation, $scope.lightness+10), third:  hsl2rgb($scope.hue, $scope.saturation, $scope.lightness + 20), rawhsl: [$scope.hue, $scope.saturation, $scope.lightness]});
+    if ($scope.addUpdateBtn === "Update Color"){
+      console.log("jgk")
+      $scope.colorData.splice($scope.currentIndex, 1, {first: hsl2rgb($scope.hue, $scope.saturation, $scope.lightness),second: hsl2rgb($scope.hue, $scope.saturation, $scope.lightness+10), third:  hsl2rgb($scope.hue, $scope.saturation, $scope.lightness + 20), rawhsl: [$scope.hue, $scope.saturation, $scope.lightness]});
+       $scope.addUpdateBtn = colorPalette.btn;
+      }
+    else{
+        $scope.colorData.push({first: hsl2rgb($scope.hue, $scope.saturation, $scope.lightness),second: hsl2rgb($scope.hue, $scope.saturation, $scope.lightness+10), third:  hsl2rgb($scope.hue, $scope.saturation, $scope.lightness + 20), rawhsl: [$scope.hue, $scope.saturation, $scope.lightness]});
+         $scope.addUpdateBtn = colorPalette.btn;
+      }
   }; 
 
   $scope.editColor = function() {
     for(var i = 0; i < $scope.colorData.length; i++){ 
       if($scope.colorData[i].first.HEX === $scope.data.group2.first.HEX){
-        
         $scope.addUpdateBtn = "Update Color";
+        $scope.hideShow = true;
+        $scope.cancel = "Cancel"
         $scope.hue = $scope.colorData[i].rawhsl[0];  
         $scope.saturation = $scope.colorData[i].rawhsl[1];
         $scope.lightness = $scope.colorData[i].rawhsl[2];
+        $scope.currentIndex = i;
       }
     }
   };
@@ -111,4 +122,11 @@ paletteMakerApp.controller('paletteMakerController', ['$scope', 'colorPalette', 
     $scope.colorData = [];
     $scope.addUpdateBtn = colorPalette.btn;
   };
+  $scope.cancelUpdate = function(){
+    $scope.addUpdateBtn = colorPalette.btn;
+    $scope.hue = colorPalette.hue;
+    $scope.saturation = colorPalette.saturation;
+    $scope.lightness = colorPalette.lightness;
+    $scope.colorData = []
+  }
 }]);
