@@ -26,7 +26,7 @@
           </div>
           <md-slider flex="60" min="0" max="360" ng-model="hue" aria-label="brown" id="red-slider" class="md-primary" style="margin-left: 10px">
           </md-slider>
-          <div flex="10" layout layout-align="center center" style="margin-left: 10px">
+          <div flex="15" layout layout-align="center center" style="margin-left: 10px">
             <input type="number" ng-model="hue" aria-label="red" aria-controls="red-slider" style="text-align: center">
           </div>
         </div>
@@ -36,7 +36,7 @@
           </div>
           <md-slider flex="60" ng-model="saturation" min="0" max="100" aria-label="green" id="green-slider" class="md-accent" style="margin-left: 10px">
           </md-slider>
-          <div flex="10" layout layout-align="center center" style="margin-left: 10px">
+          <div flex="15" layout layout-align="center center" style="margin-left: 10px">
             <input type="number" ng-model="saturation" aria-label="green" aria-controls="green-slider" style="text-align: center">
           </div>
         </div>
@@ -46,7 +46,7 @@
           </div>
           <md-slider flex="60" ng-model="lightness" min="0" max="100" aria-label="blue" id="blue-slider" class="md-primary" style="margin-left: 10px">
           </md-slider>
-          <div flex="10" layout layout-align="center center" style="margin-left: 10px">
+          <div flex="15" layout layout-align="center center" style="margin-left: 10px">
             <input type="number" ng-model="lightness" aria-label="blue" aria-controls="blue-slider" style="text-align: center">
           </div>
         </div>
@@ -67,15 +67,16 @@
              <md-option value="rawhsl[2]">Lightness</md-option>
           </md-select>
       </div>
-     <md-card flex="70" layout="column" layout-align="center center" class="md-whiteframe-z1" style="margin-top: 10px">
-            <div layout-md="f" layout-align="center center" class="whiteframe-z2"  style="padding: 5px; color: white !important; font-weight: bolder;">  
-                <div style="background-color:rgb(136, 51, 51); height: 40px; width: 350px; text-align: center; line-height: 40px;display: inline-block; margin-left: 20px">HIGH
-                  </div>
-                  <div style="background-color:rgb(207, 131, 131);height: 40px; width: 350px; text-align: center; line-height: 40px;display: inline-block; margin-left: 15px">MIDDLE
-                  </div>
-                  <div style="background-color:rgb(252, 193, 193);height: 40px; width: 350px; text-align: center; line-height: 40px; display: inline-block; margin-left: 10px">LOW
-                  </div>
-              </div>
+
+     <md-card layout layout-align="center center" class="md-whiteframe-z1" style="margin-top: 10px">
+          <div ng-show="colorData[0].isShown"   class="whiteframe-z2"  style="padding: 5px; color: white !important; font-weight: bolder;margin-left: 20px">      
+                <div style="background-color:rgb(136, 51, 51); height: 40px; width: 350px; text-align: center; line-height: 40px;display: inline-block; margin-left: 10px">HIGH
+                </div>
+                <div style="background-color:rgb(207, 131, 131);height: 40px; width: 350px; text-align: center; line-height: 40px;display: inline-block; margin-left: 10px">MIDDLE
+                </div>
+                <div style="background-color:rgb(252, 193, 193);height: 40px; width: 350px; text-align: center; line-height: 40px; display: inline-block; margin-left: 10px">LOW
+                </div>
+            </div>
       <md-radio-group ng-model="data.group2" class="md-primary"  >
             <md-radio-button ng-repeat="color in colorData | orderBy: orderProp "  
                              ng-value="color">
@@ -94,7 +95,7 @@
         </md-radio-group>
     </md-card>
     <div layout layout-align="center center" style="margin-top: 15px">
-      <md-button flex-md="15" class="md-accent md-raised md-hue-1" ng-click="editColor();" type="button">Edit Color</md-button>&nbsp; &nbsp;
+      <md-button flex-md="15" class="md-accent md-raised md-hue-1" ng-click="editColor();" type="button">{{editCancelBtn}}</md-button>&nbsp; &nbsp;
       <md-button  class="md-raised md-warn purple" flex-md="15" ng-click="removeItem()" type="button">Remove Color</md-button>&nbsp; &nbsp;
       <md-button  class="md-raised md-warn" flex-md="15" ng-click="removeAll()" type="button">Remove All</md-button>
     </div>

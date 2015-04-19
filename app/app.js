@@ -9,7 +9,8 @@ paletteMakerApp.factory('colorPalette', function(){
       hue: 170,
       saturation: 62  ,
       lightness: 47,
-      btn: "Add Color"
+      btn: "Add Color",
+      editBtn: "Edit Color"
     };
   })
   .factory('colorCollection', function(){
