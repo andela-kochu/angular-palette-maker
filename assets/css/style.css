@@ -20,3 +20,8 @@ body {
 #home h3, h4 {
   color:  white;
 }
+@media screen and (max-width: 300px) {
+  #clordd {
+    margin-left: 40px; 
+  }
+}
