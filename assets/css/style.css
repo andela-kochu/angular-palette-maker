@@ -4,9 +4,10 @@ body {
   background-size: cover;
 }
 #home {
-  background: url('../img/image.jpg');
+  /*background: url('../img/image.jpg');*/
+  background: black;
   background-size: cover;
-  height: 1024px;
+  height: 768px;
   color: rgb(5, 227, 255);
   text-align: center;
 }
