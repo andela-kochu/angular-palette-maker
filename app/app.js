@@ -2,26 +2,19 @@
 
 /* App Module */
 
-var paletteMakerApp = angular.module('paletteMakerApp', ['ngMaterial']);
+var paletteMakerApp = angular.module('paletteMakerApp', ['ngMaterial', 'ngRoute']);
 
-paletteMakerApp.factory('colorPalette', function(){
-    return {
-      hue: 170,
-      saturation: 62  ,
-      lightness: 47,
-      btn: "Add Color",
-      editBtn: "Edit Color"
-    };
+
+paletteMakerApp.config(['$routeProvider', function($routeProvider) {
+  $routeProvider.when('/home', {
+    controller: 'paletteMakerController',
+    templateUrl: 'app/partials/home.html',
   })
-  .factory('colorCollection', function(){
-    return [];
+  .when('/palette', {
+    controller: 'paletteMakerController',
+    templateUrl: 'app/partials/palette.html',
   })
-  .filter('hexacolor', function () {
-  return function (color) {
-    var output = "#";
-    output += color.r < 16 ? '0' + color.r.toString(16) : color.r.toString(16);
-    output += color.g < 16 ? '0' + color.g.toString(16) : color.g.toString(16);
-    output += color.b < 16 ? '0' + color.b.toString(16) : color.b.toString(16);
-    return output.toUpperCase();
-  };
-});
+  .otherwise({
+    redirectTo: '/home'
+  });
+}]);

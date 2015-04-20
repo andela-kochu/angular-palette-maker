@@ -11,100 +11,18 @@
 </head>
 <body ng-controller="paletteMakerController" > 
   <md-toolbar>
-      <div class="md-toolbar-tools">
-        <h2>
-          <span>CHITECH Palette Maker App</span>
-        </h2>
-      </div>
-    </md-toolbar>
-   
-    <md-content style="padding:10px"> 
-      <div >
-        <div layout >
-          <div flex="20" layout layout-align="center center">
-            <span class="md-body-1">HUE</span>
-          </div>
-          <md-slider flex="60" min="0" max="360" ng-model="hue" aria-label="brown" id="red-slider" class="md-primary" style="margin-left: 10px">
-          </md-slider>
-          <div flex="15" layout layout-align="center center" style="margin-left: 10px">
-            <input type="number" ng-model="hue" aria-label="red" aria-controls="red-slider" style="text-align: center">
-          </div>
-        </div>
-        <div layout>
-          <div flex="20" layout layout-align="center center">
-            <span class="md-body-1">SATURATION</span>
-          </div>
-          <md-slider flex="60" ng-model="saturation" min="0" max="100" aria-label="green" id="green-slider" class="md-accent" style="margin-left: 10px">
-          </md-slider>
-          <div flex="15" layout layout-align="center center" style="margin-left: 10px">
-            <input type="number" ng-model="saturation" aria-label="green" aria-controls="green-slider" style="text-align: center">
-          </div>
-        </div>
-        <div layout>
-          <div flex="20" layout layout-align="center center">
-            <span class="md-body-1">LIGTHNESS</span>
-          </div>
-          <md-slider flex="60" ng-model="lightness" min="0" max="100" aria-label="blue" id="blue-slider" class="md-primary" style="margin-left: 10px">
-          </md-slider>
-          <div flex="15" layout layout-align="center center" style="margin-left: 10px">
-            <input type="number" ng-model="lightness" aria-label="blue" aria-controls="blue-slider" style="text-align: center">
-          </div>
-        </div>
-        <div layout=-"column" layout-align="center center" style="margin-top: 5px; margin: 10px">
-            <div style="background-color:rgba({{colorData2.r}}, {{colorData2.g}}, {{colorData2.b}}, 1);height: 100px; width:100px; text-align: center; line-height: 100px; border-radius: 10px;">Preview
-            </div>
-        </div>
-            <div layout  layout-align="center center"><span><b>RGBA </b>({{colorData2.r}}, {{colorData2.g}}, {{colorData2.b}})</span>&nbsp;<span><b>HSL</b>({{hue}}, {{saturation}}, {{lightness}})</span>&nbsp;<span><b>HEX:</b> {{colorData2 | hexacolor}}</span>
-            </div>
-      <div layout  layout-align="center center" style="margin-top: 15px" >
-        <md-button class="md-raised md-primary" flex-md="15" type="button"  ng-click="addUpdateColor()">{{addUpdateBtn}}</md-button>
-        <md-button class="md-raised md-primary" ng-show="{{hideShow}}" flex-md="15" type="button"  ng-click="cancelUpdate()">{{cancel}}</md-button>
-      </div>
-      <div layout layout-align="center center" style="min-width: 150px;">
-          <md-select placeholder="Sort.........." ng-model="orderProp" width="300px">
-            <md-option value="rawhsl[0]">Hue</md-option>
-            <md-option value="rawhsl[1]">Saturation</md-option>
-             <md-option value="rawhsl[2]">Lightness</md-option>
-          </md-select>
-      </div>
-
-     <md-card layout layout-align="center center" class="md-whiteframe-z1" style="margin-top: 10px">
-          <div ng-show="colorData[0].isShown"   class="whiteframe-z2"  style="padding: 5px; color: white !important; font-weight: bolder;margin-left: 20px">      
-                <div style="background-color:rgb(136, 51, 51); height: 40px; width: 350px; text-align: center; line-height: 40px;display: inline-block; margin-left: 10px">HIGH
-                </div>
-                <div style="background-color:rgb(207, 131, 131);height: 40px; width: 350px; text-align: center; line-height: 40px;display: inline-block; margin-left: 10px">MIDDLE
-                </div>
-                <div style="background-color:rgb(252, 193, 193);height: 40px; width: 350px; text-align: center; line-height: 40px; display: inline-block; margin-left: 10px">LOW
-                </div>
-            </div>
-      <md-radio-group ng-model="data.group2" class="md-primary"  >
-            <md-radio-button ng-repeat="color in colorData | orderBy: orderProp "  
-                             ng-value="color">
-              <div class="md-whiteframe-z2"  style="padding: 5px">  
-                <div style="background-color:rgba({{color.first.r}},{{color.first.g}},{{color.first.b}},1);height: 40px; width: 350px; text-align: center; line-height: 40px;display: inline-block;margin-left: 10px">
-                    <span>RGBA({{color.first.r}}, {{color.first.g}}, {{color.first.b}},1) {{color.first | hexacolor}}</span>
-                  </div>
-                  <div style="background-color:rgba({{color.second.r}}, {{color.second.g}}, {{color.second.b}}, 1);height: 40px; width: 350px; text-align: center; line-height: 40px;display: inline-block; margin-left: 10px">
-                    RGBA({{color.second.r}}, {{color.second.g}}, {{color.second.b}}, 1) {{color.second | hexacolor}}
-                  </div>
-                  <div style="background-color:rgba({{color.third.r}}, {{color.third.g}}, {{color.third.b}},1);height: 40px; width: 350px; text-align: center; line-height: 40px; display: inline-block; margin-left: 10px">
-                    RGBA({{color.third.r}}, {{color.third.g}}, {{color.third.b}},1) {{color.third | hexacolor}}
-                  </div>
-              </div>
-            </md-radio-button>
-        </md-radio-group>
-    </md-card>
-    <div layout layout-align="center center" style="margin-top: 15px">
-      <md-button flex-md="15" class="md-accent md-raised md-hue-1" ng-click="editColor();" type="button">{{editCancelBtn}}</md-button>&nbsp; &nbsp;
-      <md-button  class="md-raised md-warn purple" flex-md="15" ng-click="removeItem()" type="button">Remove Color</md-button>&nbsp; &nbsp;
-      <md-button  class="md-raised md-warn" flex-md="15" ng-click="removeAll()" type="button">Remove All</md-button>
+    <div class="md-toolbar-tools">
+      <h2>
+        <a ng-href="#/home">CHITECH Palette Maker App</a>
+      </h2>
     </div>
-  </md-content>
+  </md-toolbar>
+  <div ng-view></div>
   <!-- Angular Material Dependencies -->
-
   <script src="app/app.js"></script>
   <script src="app/controllers/controllers.js"></script>
   <script src="app/filters/filters.js"></script>
+  <script src="app/services/services.js"></script>
 
   <script src="libs/angular-animate/angular-animate.min.js"></script>
   <script src="libs/angular-aria/angular-aria.min.js"></script>
