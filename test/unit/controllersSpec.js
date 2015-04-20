@@ -7,15 +7,29 @@ describe('PaletteMaker Contrl', function(){
       scope = $rootScope.$new();
       controller = $controller('paletteMakerController', { 
         $scope: scope
+      });
+    }));
+    describe('Controller', function() {
+      it('status if it is defined', function($controller) {  
+        expect(controller).toBeDefined();
+      });
     });
-      describe('$scope.grade', function() {
-
-          it('sets the strength to "strong" if the password length is >8 chars', function($controller) {     
-            expect(scope.addUpdateBtn).toEqual('Add Color');
-           });
-          });
-
-
-
-  }))
+    describe('Application default values', function() {
+      it('sets the default parameters of the buttons and controls', function($controller) {     
+        expect(scope.addUpdateBtn).toEqual('Add Color');
+        expect(scope.editCancelBtn).toEqual('Edit Color');
+        expect(scope.hue).toEqual(170);
+        expect(scope.saturation).toEqual(62);
+        expect(scope.lightness).toEqual(47);
+       });
+      it('sets the default parameters of the buttons and controls', function($controller) {     
+        expect(scope.colorData).toEqual([])
+      });
+    });
+    describe('Functions in the controller', function() {
+      it('set the return values of functions', function($controller) { 
+        scope.removeAll()
+        expect(scope.colorData).toEqual([]);
+      });
+    });
 });

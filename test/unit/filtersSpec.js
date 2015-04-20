@@ -2,7 +2,7 @@
 
 /* jasmine specs for filters go here */
 
-describe('filter', function() {
+/*describe('filter', function() {
 
   beforeEach(module('phonecatFilters'));
 
@@ -16,3 +16,4 @@ describe('filter', function() {
     }));
   });
 });
+*/
