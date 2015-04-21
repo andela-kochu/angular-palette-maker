@@ -1,3 +1,4 @@
+
 describe('PaletteMaker Contrl', function(){
 
   var scope, controller;
