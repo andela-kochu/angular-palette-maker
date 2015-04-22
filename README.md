@@ -1,6 +1,6 @@
-                                *********************
-                                my pallete maker app
-                                *********************
+                                              *********************
+                                              my pallete maker app
+                                              *********************
 
 It has three sliders for hue, saturation and lightness.
 
