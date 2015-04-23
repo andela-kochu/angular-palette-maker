@@ -7,8 +7,6 @@
 
 
 paletteMakerApp.controller('paletteMakerController', ['$scope', 'colorPalette', function($scope, colorPalette){
-  $scope.createColor = function(){
-  }
   $scope.addUpdateBtn = colorPalette.btn;
   $scope.editCancelBtn = colorPalette.editBtn;
   $scope.hue = colorPalette.hue;
@@ -89,7 +87,7 @@ paletteMakerApp.controller('paletteMakerController', ['$scope', 'colorPalette', 
         $scope.colorData.push({first: hsl2rgb($scope.hue, $scope.saturation, $scope.lightness),second: hsl2rgb($scope.hue, $scope.saturation, $scope.lightness+10), third:  hsl2rgb($scope.hue, $scope.saturation, $scope.lightness + 20), rawhsl: [$scope.hue, $scope.saturation, $scope.lightness], isShown: true});
          $scope.addUpdateBtn = colorPalette.btn;
       }
-  }; 
+  };
 
   $scope.editColor = function() {
     if ($scope.editCancelBtn === "Cancel Edit"){
@@ -100,13 +98,13 @@ paletteMakerApp.controller('paletteMakerController', ['$scope', 'colorPalette', 
       $scope.lightness = colorPalette.lightness;
     }
     else{
-      for(var i = 0; i < $scope.colorData.length; i++){ 
+      for(var i = 0; i < $scope.colorData.length; i++){
         if($scope.colorData[i].first.HEX === $scope.data.group2.first.HEX){
           $scope.addUpdateBtn = "Update Color";
           $scope.editCancelBtn = "Cancel Edit";
           $scope.hideShow = true;
           $scope.cancel = "Cancel"
-          $scope.hue = $scope.colorData[i].rawhsl[0];  
+          $scope.hue = $scope.colorData[i].rawhsl[0];
           $scope.saturation = $scope.colorData[i].rawhsl[1];
           $scope.lightness = $scope.colorData[i].rawhsl[2];
           $scope.currentIndex = i;
@@ -115,7 +113,7 @@ paletteMakerApp.controller('paletteMakerController', ['$scope', 'colorPalette', 
     }
   };
   $scope.removeItem = function(HEX) {
-    for(var i = 0; i < $scope.colorData.length; i++){ 
+    for(var i = 0; i < $scope.colorData.length; i++){
       if($scope.colorData[i].first.HEX === $scope.data.group2.first.HEX){
         $scope.colorData.splice(i, 1);
         $scope.addUpdateBtn = colorPalette.btn;
